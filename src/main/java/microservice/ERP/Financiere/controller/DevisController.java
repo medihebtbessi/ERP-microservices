@@ -1,13 +1,10 @@
-package microservice.ERP.demo.controller;
+package microservice.ERP.Financiere.controller;
 
-import lombok.RequiredArgsConstructor;
-import microservice.ERP.demo.model.Devis;
-import microservice.ERP.demo.services.DevisService;
+import microservice.ERP.Financiere.model.Devis;
+import microservice.ERP.Financiere.services.DevisService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/devis")

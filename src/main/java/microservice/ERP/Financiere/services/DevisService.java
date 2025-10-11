@@ -1,13 +1,12 @@
-package microservice.ERP.demo.services;
+package microservice.ERP.Financiere.services;
 
-import microservice.ERP.demo.model.Devis;
-import microservice.ERP.demo.repository.DevisRepository;
+import microservice.ERP.Financiere.model.Devis;
+import microservice.ERP.Financiere.repository.DevisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

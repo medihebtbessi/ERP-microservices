@@ -1,4 +1,4 @@
-package microservice.ERP.demo;
+package microservice.ERP.Financiere;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

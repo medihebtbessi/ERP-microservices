@@ -1,6 +1,6 @@
-package microservice.ERP.demo.repository;
+package microservice.ERP.Financiere.repository;
 
-import microservice.ERP.demo.model.Devis;
+import microservice.ERP.Financiere.model.Devis;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

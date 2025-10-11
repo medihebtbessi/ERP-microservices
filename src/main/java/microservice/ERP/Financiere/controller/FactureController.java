@@ -1,13 +1,10 @@
-package microservice.ERP.demo.controller;
+package microservice.ERP.Financiere.controller;
 
-import microservice.ERP.demo.model.Devis;
-import microservice.ERP.demo.model.Facture;
-import microservice.ERP.demo.services.FactureService;
+import microservice.ERP.Financiere.model.Facture;
+import microservice.ERP.Financiere.services.FactureService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/factures")

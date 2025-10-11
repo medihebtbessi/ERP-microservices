@@ -1,4 +1,4 @@
-package microservice.ERP.demo.model;
+package microservice.ERP.Financiere.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
