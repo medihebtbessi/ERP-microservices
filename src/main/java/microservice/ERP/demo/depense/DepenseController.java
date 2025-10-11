@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/depense")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DepenseController {
 
     private final DepenseService depenseService;
