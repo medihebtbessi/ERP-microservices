@@ -1,0 +1,29 @@
+server:
+  port: 8222
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: budget-server
+          uri: lb:http://BUDGET-SERVER
+          predicates:
+            - Path=/api/v1/customers/**
+        - id: entreprise-server
+          uri: lb:http://ENTREPRISE-SERVER
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: equipe-server
+          uri: lb:http://EQUIPE-SERVER
+          predicates:
+            - Path=/api/v1/order-lines/**
+        - id: finance-server
+          uri: lb:http://FINANCE-SERVER
+          predicates:
+            - Path=/api/v1/products/**
+        - id: projet-server
+          uri: lb:http://PROJET-SERVER
+          predicates:
+            - Path=/api/v1/payments/**
