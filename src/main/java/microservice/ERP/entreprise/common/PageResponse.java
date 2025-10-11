@@ -1,4 +1,4 @@
-package microservice.ERP.demo.common;
+package microservice.ERP.entreprise.common;
 
 import lombok.*;
 

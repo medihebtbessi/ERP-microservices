@@ -1,4 +1,4 @@
-package microservice.ERP.demo.depense;
+package microservice.ERP.entreprise.depense;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import microservice.ERP.demo.budget.Budget;
+import microservice.ERP.entreprise.budget.Budget;
 
 import java.time.LocalDate;
 @Entity

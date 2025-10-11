@@ -1,17 +1,14 @@
-package microservice.ERP.demo.depense;
+package microservice.ERP.entreprise.depense;
 
 import lombok.RequiredArgsConstructor;
-import microservice.ERP.demo.budget.Budget;
-import microservice.ERP.demo.budget.BudgetRepo;
-import microservice.ERP.demo.common.PageResponse;
+import microservice.ERP.entreprise.budget.Budget;
+import microservice.ERP.entreprise.budget.BudgetRepo;
+import microservice.ERP.entreprise.common.PageResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

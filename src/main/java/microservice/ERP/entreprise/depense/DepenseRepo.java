@@ -1,6 +1,6 @@
-package microservice.ERP.demo.depense;
+package microservice.ERP.entreprise.depense;
 
-import microservice.ERP.demo.budget.Budget;
+import microservice.ERP.entreprise.budget.Budget;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

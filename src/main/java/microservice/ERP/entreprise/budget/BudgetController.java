@@ -1,7 +1,7 @@
-package microservice.ERP.demo.budget;
+package microservice.ERP.entreprise.budget;
 
 import lombok.RequiredArgsConstructor;
-import microservice.ERP.demo.common.PageResponse;
+import microservice.ERP.entreprise.common.PageResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
