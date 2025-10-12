@@ -27,4 +27,4 @@ server:
   port: 8020
 application:
   config:
-    project-url: http://localhost:8222/api/v1/projets
+    project-url: http://localhost:8024/api/v1/projets

@@ -1,5 +1,6 @@
 package microservice.ERP.entreprise.config;
 
+import microservice.ERP.entreprise.Projet.ProjectResponse;
 import microservice.ERP.entreprise.Projet.Projet;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,12 @@ public class ProjectProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendProjectCreatedEvent(Projet project) {
+    public void sendProjectCreatedEvent(ProjectResponse project) {
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.EXCHANGE,
                 RabbitMQConfig.ROUTING_KEY,
                 project
         );
-        System.out.println("✅ Event envoyé : " + project.getNom());
+        System.out.println("✅ Event envoyé : " + project.nom());
     }
 }

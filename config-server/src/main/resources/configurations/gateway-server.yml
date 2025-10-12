@@ -10,20 +10,22 @@ spring:
         - id: budget-server
           uri: lb:http://BUDGET-SERVER
           predicates:
-            - Path=/api/v1/customers/**
-        - id: entreprise-server
-          uri: lb:http://ENTREPRISE-SERVER
-          predicates:
-            - Path=/api/v1/orders/**
-        - id: equipe-server
-          uri: lb:http://EQUIPE-SERVER
-          predicates:
-            - Path=/api/v1/order-lines/**
-        - id: finance-server
-          uri: lb:http://FINANCE-SERVER
-          predicates:
-            - Path=/api/v1/products/**
+            - Path=/api/v1/budget/**
+            - Path=/api/v1/depense/**
+       # - id: entreprise-server
+        #  uri: lb:http://ENTREPRISE-SERVER
+         # predicates:
+          #  - Path=/api/v1/orders/**
+       # - id: equipe-server
+        #  uri: lb:http://EQUIPE-SERVER
+         # predicates:
+          #  - Path=/api/v1/order-lines/**
+        #- id: finance-server
+         # uri: lb:http://FINANCE-SERVER
+          #predicates:
+           # - Path=/api/v1/products/**
         - id: projet-server
           uri: lb:http://PROJET-SERVER
           predicates:
-            - Path=/api/v1/payments/**
+            - Path=/api/v1/projets/**
+            - Path=/api/v1/taches/**

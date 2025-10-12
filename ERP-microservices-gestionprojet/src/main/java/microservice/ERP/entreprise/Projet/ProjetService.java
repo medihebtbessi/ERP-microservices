@@ -2,6 +2,7 @@ package microservice.ERP.entreprise.Projet;
 
 
 import lombok.RequiredArgsConstructor;
+import microservice.ERP.entreprise.config.ProjectProducer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +12,15 @@ import java.util.List;
 public class ProjetService {
 
     private final ProjetRepo projetRepo;
+    private final ProjectProducer projectProducer;
 
     public Projet createProjet(Projet projet) {
         // statut par défaut
         projet.setStatus(StatusProjet.EN_ATTENTE);
-        return projetRepo.save(projet);
+        projet=projetRepo.save(projet);
+        ProjectResponse projetResponse = new ProjectResponse(projet.getId(), projet.getNom());
+        projectProducer.sendProjectCreatedEvent(projetResponse);
+        return projet;
 
     }
 
