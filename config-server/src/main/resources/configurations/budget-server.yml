@@ -1,4 +1,9 @@
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: erp
+    password: erp
   h2:
     console:
       enabled: true
@@ -20,3 +25,6 @@ server:
   servlet:
     context-path: /api/v1
   port: 8020
+application:
+  config:
+    project-url: http://localhost:8222/api/v1/projets

@@ -1,4 +1,9 @@
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: erp
+    password: erp
   h2:
     console:
       enabled: true
