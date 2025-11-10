@@ -1,5 +1,6 @@
 package microservice.ERP.Financiere.controller;
 
+import microservice.ERP.Financiere.client.dto.FactureResponse;
 import microservice.ERP.Financiere.model.Facture;
 import microservice.ERP.Financiere.services.FactureService;
 import org.springframework.data.domain.Page;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/factures")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class FactureController {
 
   private final FactureService factureService;
@@ -18,7 +19,7 @@ public class FactureController {
   }
 
   @GetMapping
-  public Page<Facture> getAll(
+  public Page<FactureResponse> getAll(
     @RequestParam(defaultValue = "0") int page,
     @RequestParam(defaultValue = "5") int size) {
     return factureService.getAll(PageRequest.of(page, size));
@@ -30,7 +31,7 @@ public class FactureController {
   }
 
   @PostMapping
-  public Facture create(@RequestBody Facture facture) {
+  public FactureResponse create(@RequestBody Facture facture) {
     return factureService.create(facture);
   }
 

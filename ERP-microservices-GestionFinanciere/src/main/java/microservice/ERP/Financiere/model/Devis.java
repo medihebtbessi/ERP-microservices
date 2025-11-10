@@ -7,7 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "devis")
-public class Devis {
+public class Devis implements java.io.Serializable {
+  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +41,8 @@ public class Devis {
     EXPIRE
   }
 
-  // === Getters & Setters ===
+  private Long idEntreprise;
+
   public Long getIdDevis() {
     return idDevis;
   }
@@ -95,5 +97,13 @@ public class Devis {
 
   public void setFactures(List<Facture> factures) {
     this.factures = factures;
+  }
+
+  public Long getIdEntreprise() {
+    return idEntreprise;
+  }
+
+  public void setIdEntreprise(Long idEntreprise) {
+    this.idEntreprise = idEntreprise;
   }
 }

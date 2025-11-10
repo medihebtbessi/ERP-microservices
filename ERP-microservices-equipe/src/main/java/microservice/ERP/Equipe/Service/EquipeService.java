@@ -3,6 +3,8 @@ package microservice.ERP.Equipe.Service;
 
 import microservice.ERP.Equipe.Entity.Equipe;
 import microservice.ERP.Equipe.Repository.EquipeRepository;
+import microservice.ERP.Equipe.config.EquipeProducer;
+import microservice.ERP.Equipe.config.EquipeResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EquipeService {
     private final EquipeRepository equipeRepository;
+    private final EquipeProducer equipeProducer;
 
-    public EquipeService(EquipeRepository equipeRepository) {
+    public EquipeService(EquipeRepository equipeRepository, EquipeProducer equipeProducer ) {
         this.equipeRepository = equipeRepository;
+        this.equipeProducer= equipeProducer;
     }
 
     public Page<Equipe> getAll(Pageable pageable) {
@@ -25,7 +29,10 @@ public class EquipeService {
     }
 
     public Equipe save(Equipe equipe) {
-        return equipeRepository.save(equipe);
+        equipe=equipeRepository.save(equipe);
+        EquipeResponse equipeResponse = new EquipeResponse(equipe.getId(), equipe.getNom());
+        equipeProducer.sendProjectCreatedEvent(equipeResponse);
+        return equipe;
     }
 
     public void delete(Long id) {

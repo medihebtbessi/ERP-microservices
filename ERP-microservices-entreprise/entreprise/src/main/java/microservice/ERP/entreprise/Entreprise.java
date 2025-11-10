@@ -8,6 +8,9 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +34,9 @@ public class Entreprise {
     private String email ;
     private String adresse ;
     private String Telephone ;
+
+    @ElementCollection
+    private List<String> idClient = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private StatutEntreprise statut;
 

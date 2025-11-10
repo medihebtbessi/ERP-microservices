@@ -1,4 +1,14 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9098/realms/erp-bh"
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: erp
+    password: erp
   h2:
     console:
       enabled: true

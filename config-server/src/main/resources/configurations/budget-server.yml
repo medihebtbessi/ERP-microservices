@@ -1,4 +1,22 @@
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      allow.auto.create.topics: true
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: notification-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9098/realms/erp-bh"
+          #jwk-set-uri: "http://localhost:9098/realms/erp-bh/protocol/openid-connect/certs"
   rabbitmq:
     host: localhost
     port: 5672

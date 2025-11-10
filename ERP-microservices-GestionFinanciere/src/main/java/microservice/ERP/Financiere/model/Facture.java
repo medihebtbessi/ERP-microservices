@@ -6,7 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "facture")
-public class Facture {
+public class Facture implements java.io.Serializable {
+  private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +33,7 @@ public class Facture {
   @JoinColumn(name = "devis_id")
   @JsonBackReference
   private Devis devis;
+  private Long idEntreprise;
 
   // --- Enum interne ---
   public enum StatutFacture {
@@ -40,6 +42,8 @@ public class Facture {
     PARTIELLE,
     ANNULEE
   }
+
+
 
   // === Getters & Setters ===
   public Long getIdFacture() {
@@ -97,4 +101,6 @@ public class Facture {
   public void setDevis(Devis devis) {
     this.devis = devis;
   }
+  public Long getIdEntreprise() { return idEntreprise; }
+  public void setIdEntreprise(Long idEntreprise) { this.idEntreprise = idEntreprise; }
 }

@@ -8,6 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/projets")
 @RequiredArgsConstructor
+//@CrossOrigin(origins = "http://localhost:4200")
 public class ProjetController {
 
     private final ProjetService projetService;
@@ -35,5 +36,16 @@ public class ProjetController {
     @DeleteMapping("/{id}")
     public void deleteProjet(@PathVariable Long id) {
         projetService.deleteProjet(id);
+    }
+
+
+    @GetMapping("/test-kafka")
+    public void testKafka() {
+        this.projetService.verifyProjectByDate();
+    }
+
+    @GetMapping("/alert")
+    public List<String> getAllProjectAlerts() {
+        return projetService.getAlerts();
     }
 }

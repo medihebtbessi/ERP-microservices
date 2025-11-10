@@ -31,14 +31,11 @@ public class EmployeeService {
             employee.setEmployeeName(updatedEmployee.getEmployeeName());
             employee.setEmployeeCompany(updatedEmployee.getEmployeeCompany());
             employee.setJoiningDate(updatedEmployee.getJoiningDate());
-            employee.setUsername(updatedEmployee.getUsername());
-            employee.setPassword(updatedEmployee.getPassword());
             employee.setEmail(updatedEmployee.getEmail());
             employee.setPhone(updatedEmployee.getPhone());
             employee.setDepartment(updatedEmployee.getDepartment());
             employee.setDesignation(updatedEmployee.getDesignation());
             employee.setDescription(updatedEmployee.getDescription());
-            employee.setPermissions(updatedEmployee.getPermissions());
             return employeeRepository.save(employee);
         }).orElseThrow(() -> new RuntimeException("Employee not found"));
     }
@@ -47,4 +44,3 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 }
-

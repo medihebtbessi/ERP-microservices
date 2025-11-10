@@ -23,7 +23,8 @@ public class Projet {
     private String description;
     private LocalDate dateDebut;
     private LocalDate dateFin;
-
+    @Column(nullable = true)
+    private Long idEquipe;
 
     @Enumerated(EnumType.STRING)
     private StatusProjet status;

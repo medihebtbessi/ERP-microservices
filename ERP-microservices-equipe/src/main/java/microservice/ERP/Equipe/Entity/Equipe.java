@@ -10,8 +10,10 @@ public class Equipe {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+        private Long entrepriseId;
 
-        @NotBlank(message = "Le nom est obligatoire")
+
+    @NotBlank(message = "Le nom est obligatoire")
         private String nom;
 
         @NotBlank(message = "La description est obligatoire")

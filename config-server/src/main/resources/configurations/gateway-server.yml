@@ -1,31 +1,86 @@
 server:
   port: 8222
+
 spring:
+  main:
+    web-application-type: reactive  # ⚡ Important pour WebSocket support
+
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+
       discovery:
         locator:
           enabled: true
+
       routes:
-        - id: budget-server
-          uri: lb:http://BUDGET-SERVER
+
+        # ENTREPRISE
+        - id: entreprise-server
+          uri: lb://ENTREPRISE-SERVER
+          predicates:
+            - Path=/entreprise/**
+
+        # BUDGET
+        - id: budget-server-budget
+          uri: lb://BUDGET-SERVER
           predicates:
             - Path=/api/v1/budget/**
+        - id: budget-server-depense
+          uri: lb://BUDGET-SERVER
+          predicates:
             - Path=/api/v1/depense/**
-       # - id: entreprise-server
-        #  uri: lb:http://ENTREPRISE-SERVER
-         # predicates:
-          #  - Path=/api/v1/orders/**
-       # - id: equipe-server
-        #  uri: lb:http://EQUIPE-SERVER
-         # predicates:
-          #  - Path=/api/v1/order-lines/**
-        #- id: finance-server
-         # uri: lb:http://FINANCE-SERVER
-          #predicates:
-           # - Path=/api/v1/products/**
-        - id: projet-server
-          uri: lb:http://PROJET-SERVER
+
+        # 🧩 WebSocket vers budget
+        - id: budget-server-ws
+          uri: lb://BUDGET-SERVER
+          predicates:
+            - Path=/api/v1/alerts/stream/**
+
+
+        # EQUIPE
+        - id: equipe-server-employees
+          uri: lb://EQUIPE-SERVER
+          predicates:
+            - Path=/api/employees/**
+        - id: equipe-server-equipes
+          uri: lb://EQUIPE-SERVER
+          predicates:
+            - Path=/api/equipes/**
+
+        # FINANCE
+        - id: finance-server-devis
+          uri: lb://FINANCE-SERVER
+          predicates:
+            - Path=/api/devis/**
+        - id: finance-server-factures
+          uri: lb://FINANCE-SERVER
+          predicates:
+            - Path=/api/factures/**
+
+        # PROJET
+        - id: projet-server-projets
+          uri: lb://PROJET-SERVER
           predicates:
             - Path=/api/v1/projets/**
+        - id: projet-server-taches
+          uri: lb://PROJET-SERVER
+          predicates:
             - Path=/api/v1/taches/**
+
+        # CLIENT
+        - id: client-service
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path=/api/clients/**
+          filters:
+            - RewritePath=/client/(?<segment>.*), /$\{segment}

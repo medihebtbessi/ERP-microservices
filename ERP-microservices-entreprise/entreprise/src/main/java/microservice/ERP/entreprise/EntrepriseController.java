@@ -1,11 +1,16 @@
 package microservice.ERP.entreprise;
 
+import jakarta.validation.GroupSequence;
+import microservice.ERP.entreprise.client.ClientDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("entreprise")
@@ -14,6 +19,12 @@ public class EntrepriseController {
 
     @Autowired
     private EntrepriseService entrepriseService ;
+
+
+    @GetMapping("helloEntreprise")
+    public ResponseEntity<?> helloEntreprise(){
+        return ResponseEntity.ok("hello entreprise");
+    }
 
     @PostMapping("addEntreprise")
     public ResponseEntity<?> addEntreprise(@RequestBody Entreprise entreprise) {
@@ -68,6 +79,29 @@ public class EntrepriseController {
             return ResponseEntity.ok("Entreprise supprimée avec succès");
         } catch (Exception e) {
             return ResponseEntity.status(404).body("Erreur lors de la suppression : " + e.getMessage());
+        }
+    }
+    @GetMapping("getAllClients")
+    public List<ClientDto> getAllClients() {
+        return entrepriseService.getAllClients();
+    }
+
+
+
+    @GetMapping("getClientById/{id}")
+    public ClientDto getClientById(@PathVariable("id") String id){
+        return entrepriseService.getClientById(id);
+    }
+
+    @PostMapping("affectedClientToEntreprise/{idEntreprise}/{idClient}")
+    public ResponseEntity<?> affectedClientToEntreprise(
+            @PathVariable Long  idEntreprise,
+            @PathVariable String  idClient
+            ) {
+        try {
+            return ResponseEntity.ok(entrepriseService.ajouterClientDansEntreprise(idEntreprise, idClient));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Erreur lors de l'ajout : " + e.getMessage());
         }
     }
 
